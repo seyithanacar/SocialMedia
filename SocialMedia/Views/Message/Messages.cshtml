@@ -1,0 +1,40 @@
+﻿
+@model List<(string UserName, string LastMessageContent, int UserId, string UserSurname)>
+
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/User_Layout.cshtml";
+}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Kullanıcılar listesi -->
+            <div class="card">
+                <div class="card-header">
+                    MESAJ GÖNDERENLER
+                </div>
+                <div class="list-group list-group-flush">
+                    @foreach (var item in Model)
+                    {
+                        <a href="/Message/MesajYaz/@item.UserId" class="btn btn">
+                            <div class="card">
+                                @item.UserName @item.UserSurname
+                                <div class="dropdown-divider"></div>
+                                @item.LastMessageContent
+
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+        </div>
+    </div>
+</div>
+
+
+
+

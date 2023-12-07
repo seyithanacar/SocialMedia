@@ -1,0 +1,29 @@
+﻿@model List<SocialMedia.Models.User>
+@{
+    ViewBag.Title = "UsersList";
+    Layout = "~/Views/Admin_Layout.cshtml";
+}
+
+
+<table class="table table-striped">
+    <tr>
+        <td>ID</td>
+        <td>AD</td>
+        <td>SOYAD</td>
+        <td>MAİL</td>
+        <td>ŞİFRE</td>
+        <td>PROFİL</td>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr class="table-active">
+            <td>@x.UserID</td>
+            <td>@x.UserName</td>
+            <td>@x.UserSurname</td>
+            <td>@x.UserMail</td>
+            <td>@x.UserPassword</td>
+            <td> <a href="#" class="btn btn-secondary"></a> İNCELE</td>
+            
+        </tr>
+    }
+</table>

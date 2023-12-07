@@ -1,0 +1,43 @@
+﻿@model SocialMedia.Models.PostDetayModel
+@{
+    ViewBag.Title = "PostDetay";
+    Layout = "~/Views/User_Layout.cshtml";}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    @if (Model.SinglePost != null)
+                    {
+                        <a href="/User/Profile/@Model.SinglePost.PostId" class="card-link">
+                            <h5 class="card-title">@Model.SinglePost.User.UserName @Model.SinglePost.User.UserSurname</h5>
+                        </a>
+                        <img src="@Model.SinglePost.Images.ImageAdress" class="card-img-top" alt="">
+                        <p class="card-text">@Model.SinglePost.PostContent</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-sm btn-outline-primary">Beğen</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Yorum Yap</a>
+                            </div>
+                        </div>
+                    }
+
+                    @Html.Partial("AddComment",(int)ViewBag.id)
+
+                    <h5 class="card-title mt-3">Yorumlar</h5>
+                    <ul class="list-group">
+                        @foreach (var x in Model.CommentList)
+                        {
+                            <li class="list-group-item">
+                                <strong>@x.User.UserMail @x.CommentDate.ToString("dd.MM.yyyy HH:mm")</strong>
+                                @x.CommentContent
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

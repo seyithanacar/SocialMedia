@@ -1,0 +1,53 @@
+﻿@model List<SocialMedia.Models.User>
+@{
+    ViewBag.Title = "Followers";
+    Layout = "~/Views/User_Layout.cshtml";
+}
+
+<h2>Followers</h2>
+
+
+<form method="post" class="container mt-5">
+    @foreach (var x in Model)
+    {
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="@x.Image.ImageAdress" class="card-img-top" alt="Kullanıcı Resmi">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@x.UserMail</h5>
+                        <form method="post" @Url.Action("TakipDurumu","User") class="form-control">
+                            
+
+                                @Html.Hidden("followerid", (int)ViewBag.userid)
+                                @Html.Hidden("myid", x.UserID)
+                                @Html.Hidden("statu", 3)
+
+                                <button type="submit" class="btn btn-primary">Takipten Çık</button>
+                            
+                           
+
+                        </form>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Kullanıcı Bilgileri</h5>
+                        <hr>
+                        <p><strong>Adı:</strong> @x.</p>
+                        <p><strong>Soyadı:</strong>@x.UserSurname</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+</form>

@@ -1,0 +1,89 @@
+﻿@model SocialMedia.Models.User
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/User_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card">
+                <img src="@Model.Image.ImageAdress" class="card-img-top" alt="Kullanıcı Resmi">
+                <div class="card-body text-center">
+                    <h5 class="card-title">@Model.UserMail</h5>
+                    <form method="post" class="form-control">
+
+                        <!--takip isteği ve takipleşme yoksa--->
+                        @if (ViewBag.ctrl == 0)
+                        {
+                            @Html.Hidden("followerid", (int)ViewBag.userid)
+                            @Html.Hidden("myid", (int)ViewBag.myid)
+                            @Html.Hidden("statu", (int)ViewBag.ctrl)
+
+                            <button type="submit" class="btn btn-warning">Takip Et</button>
+
+                        }
+                        <!--takip isteği vara--->
+                        @if (ViewBag.ctrl == 2)
+                        {
+
+                            @Html.Hidden("followerid", (int)ViewBag.userid)
+                            @Html.Hidden("myid", (int)ViewBag.myid)
+                            @Html.Hidden("statu", (int)ViewBag.ctrl)
+
+                            <button type="submit" class="btn btn-success">Kabul Et</button>
+                        }
+                        <!--takip isteği vara--->
+                        @if (ViewBag.ctrl == 1)
+                        {
+
+                            @Html.Hidden("followerid", (int)ViewBag.userid)
+                            @Html.Hidden("myid", (int)ViewBag.myid)
+                            @Html.Hidden("statu", (int)ViewBag.ctrl)
+
+                            <button type="submit" class="btn btn-danger">İptal Et</button>
+                        }
+
+                        <!--takipleşme vara--->
+                        @if (ViewBag.ctrl == 3)
+                        {
+
+                            @Html.Hidden("followerid", (int)ViewBag.userid)
+                            @Html.Hidden("myid", (int)ViewBag.myid)
+                            @Html.Hidden("statu", (int)ViewBag.ctrl)
+
+                            <button type="submit" class="btn btn-danger">Takipten Çık</button>
+                        }
+                    </form>
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Kullanıcı Bilgileri</h5>
+                    <hr>
+                    <p><strong>Adı:</strong> @Model.UserName</p>
+                    <p><strong>Soyadı:</strong>@Model.UserSurname</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+

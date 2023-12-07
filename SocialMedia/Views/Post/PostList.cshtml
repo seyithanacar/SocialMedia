@@ -1,0 +1,48 @@
+﻿@using SocialMedia.Models
+@model List<Post>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <!-- Gönderi Alanı -->
+            <div class="card">
+                @if (Model != null)
+                {
+                    foreach (var x in Model)
+                    {
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <a href="/User/Profile/@x.UserId" class="card-link">
+                                            <h5 class="card-title">@x.User.UserName @x.User.UserSurname</h5>
+                                        </a>
+                                        <a href="/Post/PostDetay/@x.PostId">
+                                            <img src="@x.Images.ImageAdress" class="card-img" alt="">
+
+                                            <p class="card-text btn">@x.PostContent</p>
+                                        </a>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-sm btn-outline-primary">Beğen</a>
+                                                <a href="#" class="btn btn-sm btn-outline-secondary">Yorum Yap</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                }
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,54 @@
+﻿@model SocialMedia.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>KayıtOl</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    @using (Html.BeginForm("KayıtOl", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        
+
+        <br />
+        <p class="h4" style="margin:auto">KULLANICI KAYIT SAYFASI</p>
+
+        <br />
+        <div class="col-8" style="margin:auto">
+            ADINIZ:
+            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+
+            <br />
+            SOYADINIZ:
+            @Html.TextBoxFor(x => x.UserSurname, new { @class = "form-control" })
+
+            <br />
+            <br />
+            PROFİ RESMİ
+
+            <div class="mb-3">
+                <input type="file" name="UserImage" class="form-control-file" id="fileInput">
+            </div>
+
+            MAİL ADRESİNİZ:
+            @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control" })
+
+            <br />
+
+            ŞİFRENİZ:
+            @Html.TextBoxFor(x => x.UserPassword, new { @class = "form-control", Type = "password" })
+
+            <br />
+
+            <button class="btn btn-primary">KAYIT OL</button>
+        </div>
+
+    }
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿@model SocialMedia.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4>Giriş Yap yada Kayıt Ol</h4>
+
+                        @if (TempData["msg"] != null)
+                        {
+
+                            @Html.Raw(TempData["msg"]);
+                        }
+
+
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="text-center mb-3">
+                                <img src="https://media.istockphoto.com/id/903053114/tr/vekt%C3%B6r/profil-anonim-y%C3%BCz-simgesi-gri-siluet-ki%C5%9Fi-erkek-varsay%C4%B1lan-avatar-foto%C4%9Fraf-yer-tutucu-beyaz.jpg?s=170667a&w=0&k=20&c=bAYB7CNqFmKcBoDY_J6NirS3iy-XdC6lpK2aAHHh3Co=" alt="Profil Resmi" class="img-fluid rounded-circle" width="150">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Kullanıcı Adı:</label>
+                                @Html.TextBoxFor(x => x.UserMail, new { @class = "form-control", @id = "username", @placeholder = "MAİL...", @required = "required" })
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Şifre:</label>
+                                @Html.TextBoxFor(x => x.UserPassword, new { @class = "form-control", @Type = "password", @id = "password", @placeholder = "ŞİFRE ...", @required = "required" })
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="remember">
+                                    <label class="custom-control-label" for="remember">Beni Hatırla</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <p class="mb-0">Hesabınız yok mu? <a href="#">Kayıt Olun</a></p>
+                        <p class="mb-0"><a href="#">Şifremi Unuttum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

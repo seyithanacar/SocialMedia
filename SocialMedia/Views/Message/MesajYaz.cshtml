@@ -1,0 +1,38 @@
+﻿@model List<SocialMedia.Models.Message>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Mesajlar -->
+            <div class="card">
+                <div class="row card-header">
+                    <div class="col">Mesajlar</div> 
+                    <strong class="col">@ViewBag.sender</strong>
+                </div>
+                <div class="card-body">
+                    <!-- Mesajların listelendiği bölüm -->
+                    <ul class="list-group list-group-flush" id="message-list">
+                        @foreach (var x in Model)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                
+                                <strong>@x.MessageContent</strong>
+                                <small>@x.MessageDate</small>
+                            </li>
+                            <!-- Daha fazla mesaj ekleyin -->
+                        }
+
+                    </ul>
+                </div>
+                <form method="post" action="/Message/MesajYaz" class="card-footer">
+                    <!-- Mesaj yazma alanı -->
+                    <textarea class="form-control mb-2" id="message-input" name="mssg" placeholder="Mesajınızı girin..."></textarea>
+
+                    <button id="send-button" class="btn btn-primary">Gönder</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

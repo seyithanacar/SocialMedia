@@ -1,0 +1,27 @@
+﻿@model List<SocialMedia.Models.Report>
+@{
+    ViewBag.Title = "ReportList";
+    Layout = "~/Views/Admin_Layout.cshtml";
+}
+
+<table class="table table-primary">
+    <tr>
+        <th>ID</th>
+        <th>AÇIKLAMA</th>
+        <th>TARİH</th>
+        <th>POSTA GİT</th>
+        <th>KULLANICIYA GİT</th>
+    </tr>
+    <tr>
+        @foreach (var x in Model)
+        {
+            <th>@x.ReportId</th>
+            <th>@x.ReportTitle</th>
+            <th>@x.ReportDate</th>
+            <th><a class="btn btn-secondary" href="///@x.Posts.PostId">POSTA GİT</a></th>
+            <th><a class="btn btn-secondary" href="///@x.Posts.User.UserID">KULLANICIYA GİT</a></th>
+        }
+    </tr>
+
+</table>
+

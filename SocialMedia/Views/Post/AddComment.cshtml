@@ -1,0 +1,26 @@
+﻿@model SocialMedia.Models.PostDetayModel
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container mt-5">
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Yorum Yap</h5>
+
+                    <form method="post" action="/Post/AddComment/@Session["postid"]">
+                        <input type="text" name="PostId" value="@Session["postid"] " style="display:none" />
+
+                        <div class="form-group">
+                            @Html.TextAreaFor(x => x.AddCommnet.CommentContent, new { @class = "form-control", placeholder = "Yorumunuzu buraya yazın..." })
+                        </div>
+                        <button type="submit" class="btn btn-primary">Yorum Yap</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
